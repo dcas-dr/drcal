@@ -178,15 +178,14 @@ document.addEventListener("DOMContentLoaded", () => {
         messages.forEach(message => {
             var card = document.createElement("div");
             card.className = "col-md-6 col-lg-4 mb-4 mx-auto";
-            var energyRevenueDisplay = message.energyRevenue !== undefined ? `<p class="card-text fw-bold fs-5" style="text-align: center;">Energy Revenue: $${message.energyRevenue.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</p>` : "";
-            var energyRateDisplay = message.energyRate !== undefined ? `<p class="card-text fw-bold fs-5" style="text-align: center;">Energy Rate: $${message.energyRate}/kWh</p>` : "";
-            // console.log('message.rate:', message.rate); 
-            var capacityRateDisplay = `<p class="card-text fw-bold fs-5" style="text-align: center;">Capacity Rate: $${message.rate}/kW/month</p>`;
-            var capacityRevenueDisplay = `<p class="card-text fw-bold fs-5" style="text-align: center;">Capacity Revenue: $${message.capacityRevenue.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</p>`;
+            var energyRevenueDisplay = message.energyRevenue !== undefined ? `<p class="card-text fw-bold" style="text-align: center; font-size: 1.2em; font-weight: 900;">Energy Revenue: $${message.energyRevenue.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</p>` : "";
+            var energyRateDisplay = message.energyRate !== undefined ? `<p class="card-text fw-bold" style="text-align: center; font-size: 1.2em; font-weight: 900;">Energy Rate: $${message.energyRate}/kWh</p>` : "";
+            var capacityRateDisplay = `<p class="card-text fw-bold" style="text-align: center; font-size: 1.2em; font-weight: 900;">Capacity Rate: $${message.rate}/kW/month</p>`;
+            var capacityRevenueDisplay = `<p class="card-text fw-bold" style="text-align: center; font-size: 1.2em; font-weight: 900;">Capacity Revenue: $${message.capacityRevenue.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</p>`;
             card.innerHTML = `
                 <div class="card h-100">
                 <div class="card-body">
-                    <h5 class="text-center">${message.programName}</h5>
+                    <h6 class="text-center" style="font-size: 1.4em; font-weight: 900;">${message.programName}</h6>
                     ${capacityRevenueDisplay}
                     ${energyRevenueDisplay}
                     ${capacityRateDisplay}
@@ -194,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 </div>
             `;
+        
         // append the card to the parent container
         document.getElementById("individualResultsCards").appendChild(card);
         });
@@ -407,16 +407,16 @@ document.addEventListener("DOMContentLoaded", () => {
         let programDetails = {
             "ConEd CSRP": { months: 5, rate: 18 },
             "ConEd DLRP": { months: 5, rate: 18 },
-            "NYISO SCR Summer": { months: 6, rate: 19 },
-            "NYISO SCR Winter": { months: 6, rate: 10 }
+            "NYISO SCR (Summer)": { months: 6, rate: 19 },
+            "NYISO SCR (Winter)": { months: 6, rate: 10 }
         };
 
         // Get commitments
         let commitments = {
             "ConEd CSRP": document.getElementById("input1").value,
             "ConEd DLRP": document.getElementById("input1").value,
-            "NYISO SCR Summer": document.getElementById("input1").value,
-            "NYISO SCR Winter": document.getElementById("input1").value
+            "NYISO SCR (Summer)": document.getElementById("input1").value,
+            "NYISO SCR (Winter)": document.getElementById("input1").value
         };
 
         // Clear previous results from the correct container
@@ -433,7 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let { months, rate } = programDetails[program];
                 let revenue = commitment * months * rate;
 
-                if (program === "NYISO SCR Summer" || program === "NYISO SCR Winter") {
+                if (program === "NYISO SCR (Summer)" || program === "NYISO SCR (Winter)") {
                     revenue *= 0.9;
                 }
 
@@ -446,8 +446,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.innerHTML = `
                 <div class="card h-100">    
                     <div class="card-body">
-                        <h5 class="text-center">${program}</h5>
-                        <p class="card-text fw-bold fs-5" style="text-align: center;">
+                        <h5 class="text-center" style="font-size: 1.4em; font-weight: 900;">${program}</h5>
+                        <p class="card-text fw-bold" style="text-align: center; font-size: 1.2em; font-weight: 900;">
                             Maximum Revenue: $${revenue.toLocaleString()}<br>
                             Capability Period: ${months} Months<br>
                             Capacity Rate: $${rate}/kW/month
@@ -471,7 +471,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card.innerHTML = `
             <div class="card h-100">    
                 <div class="card-body">
-                    <p class="card-text fw-bold fs-5" style="text-align: center;">
+                    <p class="card-text fw-bold fs-5" style="text-align: center; font-size: 1.4em; font-weight: 900;">
                         Maximum Revenue: $${totalRevenue.toLocaleString()}
                     </p>
                 </div>
