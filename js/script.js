@@ -50,34 +50,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
    
     
-    // to make the toggle element and listen for changes
+    // Get the toggle element and listen for changes
     document.getElementById("toggle").addEventListener("change", function () {
-    // to get the form, message, radio, and program containers elements
+        // Get the form, message, radio, and program containers elements
         let form1 = document.getElementById("form1");
         let form2 = document.getElementById("form2");
-        // let message = document.getElementById("messages");
         let radios = document.getElementsByName("capabilityPeriod");
         let programContainers = document.getElementsByClassName("ProgramDiv");
         let programselect = document.getElementById("programSelect");
         let resultContainerF1 = document.getElementById("resultContainerF1");
+        let totalResultContainer = document.getElementById("totalResultContainer");
+        let totalResultContainerF1 = document.getElementById("totalResultContainerF1");
 
         if (this.checked) {
-        form1.style.display = "block";
-        form2.style.display = "none";
+            form1.style.display = "block";
+            form2.style.display = "none";
 
-        // To Reset form2, message, radios, and hide program containers
-        form2.reset();
+            // Reset form2, message, radios, and hide program containers
+            form2.reset();
+            totalResultContainer.style.display = "none";
+            totalResultContainerF1.style.display = "none"; 
         } else {
-        form1.style.display = "none";
-        form2.style.display = "block";
+            form1.style.display = "none";
+            form2.style.display = "block";
 
-        // To Reset form1, message, radios, and hide program containers
-        form1.reset();
+            // Reset form1, message, radios, and hide program containers
+            form1.reset();
         }
-        
+
         // Reset radios
         for (let i = 0; i < radios.length; i++) {
-        radios[i].checked = false;
+            radios[i].checked = false;
         }
 
         // Hide program containers
@@ -88,16 +91,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Hide program select
         programselect.style.display = "none";
 
-        // Hide total result container
-        document.getElementById("totalResultContainer").style.display = "none";
-        document.getElementById("totalResultContainerF1").style.display = "none";
-        document.getElementById("individualResultsCards").innerHTML = "";
-    
         // Reset resultContainerF1
-         resultContainerF1.innerHTML = "";
-
+        resultContainerF1.innerHTML = "";
     });
-    
 
     // Form 1(Detailed)
     window.onload = function () {
@@ -439,10 +435,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Get the total revenue display and its parent container
-        let totalRevenueDisplay = document.getElementById("totalRevenueDisplayF1");
-        //clear total result container
-        let totalResultContainer = document.getElementById("totalResultContainerF1");
-        totalResultContainer.innerHTML = '';
+        let totalRevenueDisplayF1 = document.getElementById("totalRevenueDisplayF1");
+        let totalResultContainerF1 = document.getElementById("totalResultContainerF1");
+
+        // clear previous total revenue
+        totalResultContainerF1.innerHTML = "";
+        
 
         // Create a card for the total revenue
         let card = document.createElement("div");
@@ -458,12 +456,10 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         // Append the total revenue card to the total result container
-        totalResultContainer.appendChild(card);
+        totalResultContainerF1.appendChild(card);
 
-        // Hide the original total revenue display
-        totalRevenueDisplay.style.display = "none";
-
-        totalResultContainer.style.display = "block";
+        // Display the total revenue
+        totalResultContainerF1.style.display = "block";
 
     };
 
