@@ -1,7 +1,6 @@
-/* eslint-disable no-undef */
 document.addEventListener("DOMContentLoaded", () => {
    
-    // Get tooltip elements and initialize them
+    // tooltip elements and initialize 
 
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -13,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
 
     
-    // Assuming you have a form with id 'myForm'
+    // Enter to calculate totals in form2(simplified)
     document.getElementById('form2').addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
         event.preventDefault();
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Assuming you have a form with id 'myForm'
+    // Enter to calculate totals in form2(detailed)
     document.getElementById('form1').addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
         event.preventDefault();
@@ -48,14 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
             detailedLabel.classList.add('suppress');
             detailedLabel.classList.remove('highlight');
         }
-        
-
     });
    
     
-    // Get the toggle element and listen for changes
+    // to make the toggle element and listen for changes
     document.getElementById("toggle").addEventListener("change", function () {
-    // Get the form, message, radio, and program containers elements
+    // to get the form, message, radio, and program containers elements
         let form1 = document.getElementById("form1");
         let form2 = document.getElementById("form2");
         // let message = document.getElementById("messages");
@@ -68,13 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
         form1.style.display = "block";
         form2.style.display = "none";
 
-        // Reset form2, message, radios, and hide program containers
+        // To Reset form2, message, radios, and hide program containers
         form2.reset();
         } else {
         form1.style.display = "none";
         form2.style.display = "block";
 
-        // Reset form1, message, radios, and hide program containers
+        // To Reset form1, message, radios, and hide program containers
         form1.reset();
         }
         
@@ -102,9 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     
 
-    // Form 1
+    // Form 1(Detailed)
     window.onload = function () {
-        // Get the radio buttons, cards, and programSelect
+        // the radio buttons, cards, and programSelect elements by id
         let summer = document.getElementById("summer");
         let winter = document.getElementById("winter");
         let both = document.getElementById("both");
@@ -115,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let totalbutton = document.getElementById("total-button-container");
         let programSelect = document.getElementById("programSelect"); 
 
-        // Listen for changes on the radio buttons
+        // EventListeners for changes on the radio buttons
         summer.addEventListener("change", showCards);
         winter.addEventListener("change", showCards);
         both.addEventListener("change", showCards);
@@ -136,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
             SCRW.style.display = "none";
             totalbutton.style.display = "none";
 
-            // Show the appropriate cards
+            // to show applicable cards according to season
             if (summer.checked) {
                 ConEdCSRP.style.display = "block";
                 ConEdDLRP.style.display = "block";
@@ -154,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // Show programSelect
-            programSelect.style.display = "block";  // Add this line
+            programSelect.style.display = "block";  
         }
     };
 
@@ -169,10 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
         customBox.value = "";
         }
     };
-    
-
-
-    function displayProgramResults(messages) {
+   //results Display function and cards 
+   function displayProgramResults(messages) {
         var individualResultsCards = document.getElementById("individualResultsCards");
         individualResultsCards.innerHTML = ""; // Clear existing content
         messages.forEach(message => {
@@ -199,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
+   //Total calculation function
     window.calculateTotalRevenue = function() {
         var totalRevenue = 0;
         var totalCO2Emissions = 0;
@@ -379,31 +374,13 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             hours = 1; // Set hours to 1 if no option is selected
         }
-        console.log('Hours:', hours); // Add this line
+        console.log('Hours:', hours); 
         return hours;
     }
     
-
-    
-
-    // Form 2
-    // Define displayRates function
-        // window.displayRates=function () {
-        //     var csrpRate = getLocationRate('selectIdForCSRP', 'CSRP');
-        //     var dlrpRate = getLocationRate('selectIdForDLRP', 'DLRP');
-        //     var scrsRate = getLocationRate('selectIdForSCRS', 'SCRS');
-        //     var scrwRate = getLocationRate('selectIdForSCRW', 'SCRW');
-
-        //     var rateDisplayDiv = document.getElementById('rateDisplayDiv');
-        //     rateDisplayDiv.innerHTML = `
-        //         <p>CSRP: Capacity Rate: $${csrpRate}/kW, Energy Rate: $${csrpRate}/kW</p>
-        //         <p>DLRP: Capacity Rate: $${dlrpRate}/kW, Energy Rate: $${dlrpRate}/kW</p>
-        //         <p>SCRS: Capacity Rate: $${scrsRate}/kW</p>
-        //         <p>SCRW: Capacity Rate: $${scrwRate}/kW</p>
-        //     `;
-        // };
+   //form2(Simplified) total Calculation and results display
     window.calculate = function() {
-        // Define program details
+        // program details
         let programDetails = {
             "ConEd CSRP": { months: 5, rate: 18 },
             "ConEd DLRP": { months: 5, rate: 18 },
@@ -440,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Add revenue to total
                 totalRevenue += revenue;
 
-                // Create card element
+                //card element
                 let card = document.createElement("div");
                 card.className = "col-md-4 col-lg-6 mb-4 mx-auto small";
                 card.innerHTML = `
@@ -463,7 +440,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Get the total revenue display and its parent container
         let totalRevenueDisplay = document.getElementById("totalRevenueDisplayF1");
+        //clear total result container
         let totalResultContainer = document.getElementById("totalResultContainerF1");
+        totalResultContainer.innerHTML = '';
 
         // Create a card for the total revenue
         let card = document.createElement("div");
