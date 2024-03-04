@@ -53,7 +53,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Division of Energy Management</h4>
+                            <h4 class="modal-title">About</h4>
                             <a href="https://www.nyc.gov/site/dcas/agencies/demand-response.page" target="_blank"
                                 rel="noopener"
                                 style="font-size:x-small; color: #333; background-color: rgb(221, 245, 221); padding: 5px; border-radius: 50%; font-weight: bolder;">i</a>
@@ -85,7 +85,7 @@
                                 collective power
                                 of city agencies to not only decrease energy consumption but also generate
                                 substantial
-                                revenue, leading to over $100 million earned from 2013 to 2021. This
+                                revenue, leading to over $100 million earned from 2013 to date. This
                                 concerted effort
                                 underscores a commitment to not just energy savings but also to a greener,
                                 more
@@ -256,11 +256,11 @@
                                     Calculations:</div>
                                 <div class="card-body bg-light">
                                     <div class="row">
-                                        <div class="col-12 text-center fs-6"><strong>CO<sub>2</sub> Emissions
-                                                Savings</strong></div>
+                                        <div class="col-12 text-center fs-6"><strong>CO<sub>2</sub> Emission
+                                                Avoided</strong></div>
                                         <div class="col-12 text-center fs-6 mt-2 font-weight-normal text-muted">
                                             Commitment (kW) &times; Event Hours &times; CO<sub>2</sub>Emission
-                                            Coefficient &times; Performance (assuming 100% performance)
+                                            Coefficient &times; Performance
                                         </div>
                                     </div>
                                 </div>
@@ -443,7 +443,8 @@
                                                                     event hours</option>
                                                             </select>
                                                             <input type="number" id="customBox1" class="form-control"
-                                                                style="display: none;" placeholder="Enter Event Hours">
+                                                                min="1" style="display: none;"
+                                                                placeholder="Enter Event Hours">
                                                         </div>
                                                     </div>
                                                     <!-- Commitment Input -->
@@ -451,7 +452,8 @@
                                                         <div data-bs-toggle="tooltip" data-bs-html="true"
                                                             title="Load reduction in kW.">
                                                             <input type="number" id="commitmentInput"
-                                                                class="form-control" placeholder="Enter Commitment">
+                                                                class="form-control" min="1"
+                                                                placeholder="Enter Commitment">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -492,7 +494,8 @@
                                                                     event hours</option>
                                                             </select>
                                                             <input type="number" id="customBox2" class="form-control"
-                                                                style="display: none;" placeholder="Enter Event Hours">
+                                                                min="1" style="display: none;"
+                                                                placeholder="Enter Event Hours">
                                                         </div>
                                                     </div>
                                                     <!-- Commitment Input -->
@@ -500,7 +503,8 @@
                                                         <div data-bs-toggle="tooltip" data-bs-html="true"
                                                             title="Load reduction in kW.">
                                                             <input type="number" id="commitmentInput2"
-                                                                class="form-control" placeholder="Enter Commitment">
+                                                                class="form-control" min="1"
+                                                                placeholder="Enter Commitment">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -518,7 +522,7 @@
                                                     <!-- location Select Box -->
                                                     <div class="col-12 col-md-6 col-lg-4">
                                                         <div data-bs-toggle="tooltip" data-bs-html="true"
-                                                            title="Rate programs pay(in $/kW/month).">
+                                                            title="Rate programs pay (in $/kW/month).">
                                                             <select id="locationSelect3" class="form-control"
                                                                 onchange="toggleEventHoursInput(this.value, 'customBox3')">
                                                                 <option value="">Select Capacity Rate</option>
@@ -534,10 +538,16 @@
                                                     <div class="col-12 col-md-6 col-lg-4">
                                                         <div data-bs-toggle="tooltip" data-bs-html="true"
                                                             title="Event/Test events duration in hrs.">
-                                                            <select id="eventHoursSelect3" class="form-control">
+                                                            <select id="eventHoursSelect3" class="form-control"
+                                                                onchange="toggleEventHoursInput(this.value, 'customBox5')">
                                                                 <option value="">Select Event Hours</option>
                                                                 <option value="default">Test Event (1 Hour)</option>
+                                                                <option value="custom">Custom
+                                                                    event hours</option>
                                                             </select>
+                                                            <input type="number" id="customBox5" class="form-control"
+                                                                min="1" style="display: none;"
+                                                                placeholder="Enter Event Hours">
                                                         </div>
                                                     </div>
                                                     <!-- Commitment Input -->
@@ -545,7 +555,8 @@
                                                         <div data-bs-toggle="tooltip" data-bs-html="true"
                                                             title="Load reduction in kW.">
                                                             <input type="number" id="commitmentInput3"
-                                                                class="form-control" placeholder="Enter Commitment">
+                                                                class="form-control" min="1"
+                                                                placeholder="Enter Commitment">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -563,7 +574,7 @@
                                                     <!-- location Select Box -->
                                                     <div class="col-12 col-md-6 col-lg-4">
                                                         <div data-bs-toggle="tooltip" data-bs-html="true"
-                                                            title="Rate programs pay(in $/kW/month).">
+                                                            title="Rate programs pay (in $/kW/month).">
                                                             <select id="locationSelect4" class="form-control"
                                                                 onchange="toggleEventHoursInput(this.value, 'customBox4')">
                                                                 <option value="">Select Capacity Rate</option>
@@ -572,19 +583,26 @@
                                                                 <option value="custom">Enter Custom Rate</option>
                                                             </select>
                                                             <input type="number" id="customBox4" class="form-control"
-                                                                style="display: none;" placeholder="Enter custom rate">
+                                                                min="1" style="display: none;"
+                                                                placeholder="Enter custom rate">
                                                         </div>
                                                     </div>
                                                     <!-- Event Hours Select Box -->
                                                     <div class="col-12 col-md-6 col-lg-4">
                                                         <div data-bs-toggle="tooltip" data-bs-html="true"
                                                             title="Event/Test events duration in hrs.">
-                                                            <select id="eventHoursSelect4" class="form-control">
+                                                            <select id="eventHoursSelect4" class="form-control"
+                                                                onchange="toggleEventHoursInput(this.value, 'customBox6')">
                                                                 <option value="">Select Event Hours</option>
                                                                 <option value="default">Test
                                                                     Event (1
                                                                     Hour)</option>
+                                                                <option value="custom">Custom
+                                                                    event hours</option>
                                                             </select>
+                                                            <input type="number" id="customBox6" class="form-control"
+                                                                min="1" style="display: none;"
+                                                                placeholder="Enter Event Hours">
                                                         </div>
                                                     </div>
                                                     <!-- Commitment Input -->
@@ -592,7 +610,8 @@
                                                         <div data-bs-toggle="tooltip" data-bs-html="true"
                                                             title="Load reduction in kW.">
                                                             <input type="number" id="commitmentInput4"
-                                                                class="form-control" placeholder="Enter Commitment">
+                                                                class="form-control" min="1"
+                                                                placeholder="Enter Commitment">
                                                         </div>
                                                     </div>
                                                 </div>
