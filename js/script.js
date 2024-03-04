@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // document.getElementById("yourSelectElementId").addEventListener("change", toggleEventHoursInput);
+    
 
     window.toggleEventHoursInput = function(value, inputId) {
         var customBox = document.getElementById(inputId);
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
    //results Display function and cards 
    function displayProgramResults(messages) {
         var individualResultsCards = document.getElementById("individualResultsCards");
-        individualResultsCards.innerHTML = ""; // Clear existing content
+        individualResultsCards.innerHTML = ""; 
         messages.forEach(message => {
             var card = document.createElement("div");
             card.className = "col-md-6 col-lg-4 mb-4 mx-auto";
@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
 
         // Calculate for SCR Summer
-        resultsSCRS = calculateProgramRevenue("SCRS", "locationSelect3", "eventHoursSelect3", "customBox3", "commitmentInput3", 6);
+        resultsSCRS = calculateProgramRevenue("SCRS", "locationSelect3", "eventHoursSelect3","customBox3","commitmentInput3", 6);
         totalRevenue += resultsSCRS.revenue;
         totalCO2Emissions += resultsSCRS.co2Emissions;
             if (resultsSCRS.revenue !== 0) {
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (document.getElementById("winter").checked || document.getElementById("both").checked) {
         // Calculate for SCR Winter
-        resultsSCRW = calculateProgramRevenue("SCRW", "locationSelect4", "eventHoursSelect4", "customBox4", "commitmentInput4", 6);
+        resultsSCRW = calculateProgramRevenue("SCRW", "locationSelect4", "eventHoursSelect4","customBox4", "commitmentInput4", 6);
         totalRevenue += resultsSCRW.revenue;
         totalCO2Emissions += resultsSCRW.co2Emissions;
             if (resultsSCRW.revenue !== 0) {
@@ -348,24 +348,32 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         } else if (selectedOption === "custom") {
             // Use the corresponding custom box input for custom rates
-            rate = parseFloat(document.getElementById("customBox" + selectId.charAt(selectId.length - 1)).value) || 0;
+            rate = parseFloat(document.getElementById("customBox" + selectId.charAt(selectId.length -1)).value) || 0;
         }
         console.log('rate:', rate);
         return rate;
     }
 
 
-    // Helper function to get the event hours based on the selected option or custom input
-    function getEventHours(selectId, inputId) {
+    var customBoxMapping = {
+        "1": "1",
+        "2": "2",
+        "3": "5",
+        "4": "6"
+    };
+
+    function getEventHours(selectId) {
         var selectedOption = document.getElementById(selectId).value;
         var hours; // Removed default value
         if (selectedOption === "custom") {
-            hours = parseFloat(document.getElementById(inputId).value) || 0;
+            // Use the corresponding custom box input for custom hours
+            var customBoxId = "customBox" + customBoxMapping[selectId.charAt(selectId.length -1)];
+            hours = parseFloat(document.getElementById(customBoxId).value) || 0;
         } else if (selectedOption === "default") {
             if (selectId === "eventHoursSelect2") {
-                hours = 2; // Set hours to 2 for default in eventHoursSelect2
+                hours = 2; 
             } else {
-                hours = 1; // Set hours to 1 for default in other select boxes
+                hours = 1; 
             }
         } else {
             hours = 1; // Set hours to 1 if no option is selected
