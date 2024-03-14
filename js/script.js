@@ -429,7 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="card-body">
                         <h5 class="text-center" style="font-size: 1.4em; font-weight: 900;">${program}</h5>
                         <p class="card-text fw-bold" style="text-align: center; font-size: 1.2em; font-weight: 900;">
-                            Maximum Revenue: $${revenue.toLocaleString()}<br>
+                            Maximum Revenue: $${Math.round(revenue).toLocaleString()}<br>
                             Capability Period: ${months} Months<br>
                             Capacity Rate: $${rate}/kW/month
                         </p>
@@ -457,7 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="card h-100">    
                 <div class="card-body">
                     <p class="card-text fw-bold fs-5" style="text-align: center; font-size: 1.4em; font-weight: 900;">
-                        Maximum Revenue: $${totalRevenue.toLocaleString()}
+                        Maximum Revenue: $${Math.round(totalRevenue).toLocaleString()}
                     </p>
                 </div>
             </div>
