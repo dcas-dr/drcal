@@ -539,7 +539,7 @@
                                                             </select>
                                                             <input type=" number" id="customBox3" class="form-control"
                                                                 style="display: none;" placeholder="Enter custom rate"
-                                                                onkeydown="return event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(String.fromCharCode(event.keyCode)))">
+                                                                onkeydown="return (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode === 8 || event.keyCode === 46 ? true : !isNaN(Number(String.fromCharCode(event.keyCode)))">
                                                         </div>
                                                     </div>
                                                     <!-- Event Hours Select Box -->
