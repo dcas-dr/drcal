@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
         var co2Emission = commitment * eventHours * CO2_EMISSION_FACTOR;
 
         if (program === "SCRS" || program === "SCRW") {
-            capacityRevenue *= 0.6884; 
+            capacityRevenue *= 0.6749; 
             energyRevenue = 0; 
         }
 
@@ -333,7 +333,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (program === "DLRP") {
                 rate = 18; // $18/kW for DLRP Location1
             } else if (program === "SCRS") {
-                rate = 19; // $19/kW for SCR Summer Location1
+                rate = 14.55; // $19/kW for SCR Summer 2023Location1//Summer 2024 $14.55/kw updtaed on 10/17/2024
             }
             else if (program === "SCRW") {
                 rate = 10; // $19/kW for SCR Summer Location1
@@ -388,7 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let programDetails = {
             "ConEd CSRP": { months: 5, rate: 18 },
             "ConEd DLRP": { months: 5, rate: 18 },
-            "NYISO SCR (Summer)": { months: 6, rate: 19 },
+            "NYISO SCR (Summer)": { months: 6, rate: 14.55 },//updated rates to $14.55 on 10/17/2024
             "NYISO SCR (Winter)": { months: 6, rate: 10 }
         };
 
@@ -415,7 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let revenue = commitment * months * rate;
 
                 if (program === "NYISO SCR (Summer)" || program === "NYISO SCR (Winter)") {
-                    revenue *= 0.6884;
+                    revenue *= 0.6749;
                 }
 
                 // Add revenue to total
