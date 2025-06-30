@@ -388,8 +388,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let programDetails = {
             "ConEd CSRP": { months: 5, rate: 18 },
             "ConEd DLRP": { months: 5, rate: 18 },
-            "NYISO SCR (Summer)": { months: 6, rate: 14.55 },//updated rates to $14.55 on 10/17/2024
-            "NYISO SCR (Winter)": { months: 6, rate: 10 }
+            "NYISO SCR (Summer)": { months: 6, rate: 14 },//updated rates to $14.55 on 10/17/2024//updated rates to $14.00 on 10/17/2024
+            "NYISO SCR (Winter)": { months: 6, rate: 8 }//Updated from $10/kw to $8/kw on 06/30/2025
         };
 
         // Get commitments
