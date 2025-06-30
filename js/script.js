@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
         var co2Emission = commitment * eventHours * CO2_EMISSION_FACTOR;
 
         if (program === "SCRS" || program === "SCRW") {
-            capacityRevenue *= 0.6749; 
+            capacityRevenue *= 0.6831; //Updated to 0.6831 from  0.6749 on 06/30/2025
             energyRevenue = 0; 
         }
 
@@ -415,7 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let revenue = commitment * months * rate;
 
                 if (program === "NYISO SCR (Summer)" || program === "NYISO SCR (Winter)") {
-                    revenue *= 0.6749;
+                    revenue *= 0.6831; //Updated to 0.6831 from  0.6749 on 06/30/2025
                 }
 
                 // Add revenue to total
