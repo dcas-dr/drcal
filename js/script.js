@@ -333,10 +333,10 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (program === "DLRP") {
                 rate = 18; // $18/kW for DLRP Location1
             } else if (program === "SCRS") {
-                rate = 14.55; // $19/kW for SCR Summer 2023Location1//Summer 2024 $14.55/kw updtaed on 10/17/2024
+                rate = 14; // $19/kW for SCR Summer 2023Location1//Summer 2024 $14.55/kw updtaed on 10/17/2024//Summer 2025 updated $14
             }
             else if (program === "SCRW") {
-                rate = 10; // $19/kW for SCR Summer Location1
+                rate = 8; // $19/kW for SCR Summer Location1//Updated Winter 2024 $8
             }
         } else if (selectedOption === "location2") {
             if (program === "CSRP") {
